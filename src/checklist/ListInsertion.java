@@ -7,7 +7,6 @@ package checklist;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,11 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class ListInsertion extends javax.swing.JFrame implements ActionListener {
 
-    private Connection conn;  //first four lines are for the database
     private ResultSet rs;
-    private Statement stmt;
-    private String dbConn = "jdbc:derby:contact;create=true";
-    //String listtracker = Start.jTextField1.getText();  //keeps track of the task lists
+    private final Statement stmt;
     String listtracker;
 
     /*public String getListtracker() {
@@ -53,6 +49,7 @@ public class ListInsertion extends javax.swing.JFrame implements ActionListener 
         this.listtracker = Start.jTextField1.getText();  //keeps track of the task lists
         this.rs = rs;
         this.stmt = stmt;
+        showResults();
     }
     
     public ListInsertion(ResultSet rs, Statement stmt, String listtracker) {
@@ -65,6 +62,7 @@ public class ListInsertion extends javax.swing.JFrame implements ActionListener 
         this.listtracker = listtracker;  //keeps track of the task lists
         this.rs = rs;
         this.stmt = stmt;
+        showResults();
     }
     
 
@@ -254,7 +252,6 @@ public class ListInsertion extends javax.swing.JFrame implements ActionListener 
                 rs.absolute(rowtracker + 1);
                 rs.updateBoolean("completestatus", true);
                 rs.updateRow();  //finish the row update
-                //rs.close();  //close the cursor
                 rs = stmt.executeQuery("select * from todolist where checklistname = '" + listtracker + "'");
                 showResults();
             }
@@ -285,7 +282,6 @@ public class ListInsertion extends javax.swing.JFrame implements ActionListener 
             int check = JOptionPane.showConfirmDialog(this, "Delete task?", "", JOptionPane.YES_NO_OPTION);
             if (check == JOptionPane.YES_OPTION) {
                 int rowtracker = tableData.getSelectedRow();
-                //while(rs.next()){  //NOT THIS!
                 //Reference:  move to next row of resultset:  https://docs.oracle.com/javase/7/docs/api/java/sql/ResultSet.html
                 rs.absolute(rowtracker + 1);
                 rs.deleteRow();  //deletes the row with the selected task
