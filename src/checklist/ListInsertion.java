@@ -100,6 +100,8 @@ public class ListInsertion extends javax.swing.JFrame implements ActionListener 
 
         jLabel2.setText("Enter a Due Date:");
 
+        txtDate.setText("MM-DD-YYYY");
+
         btnAdd.setText("Add Task");
 
         btnDeleteTask.setText("Delete");
@@ -126,7 +128,7 @@ public class ListInsertion extends javax.swing.JFrame implements ActionListener 
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                     .addComponent(btnCreate)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +152,7 @@ public class ListInsertion extends javax.swing.JFrame implements ActionListener 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(btnCreate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,7 +173,7 @@ public class ListInsertion extends javax.swing.JFrame implements ActionListener 
                 .addComponent(lblList))
         );
 
-        setSize(new java.awt.Dimension(557, 277));
+        setSize(new java.awt.Dimension(566, 287));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

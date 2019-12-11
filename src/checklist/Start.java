@@ -271,25 +271,6 @@ public final class Start extends javax.swing.JFrame {
 
 
 
-public void deleteList() {
-        //Reference material:  https://www.mkyong.com/swing/java-swing-how-to-make-a-confirmation-dialog/
-        try {
-            int check = JOptionPane.showConfirmDialog(this, "Delete your list?", "", JOptionPane.YES_NO_OPTION);
-            if (check == JOptionPane.YES_OPTION) {
-                String listNow = (String) jComboBox1.getSelectedItem();
-                rs = stmt.executeQuery("select * from todolist where checklistname = '" + listNow + "'");  //the SQL query to get the list names
-                rs.beforeFirst();  //start at the beginning (we're not inserting, so NOT using movetoinsertrow())
-                while (rs.next()) {  //move the cursor forward
-                    rs.deleteRow();  //delete the selected list
-                }
-                jComboBox1.removeItem(listNow);  //Reference:  https://www.w3schools.com/jsref/met_storage_removeitem.asp
-                jComboBox1.setSelectedIndex(0);  //Reference:  https://stackoverflow.com/questions/12048864/resetting-the-value-of-a-jcombobox/17871043
-                rs.close();  //Reference:  https://stackoverflow.com/questions/4507440/must-jdbc-resultsets-and-statements-be-closed-separately-although-the-connection
-                }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
-    }
 
 public void getResultSet() {
         try {
